@@ -7,7 +7,9 @@ export const generateCyclotron = (n: number): number[][] => {
 
 export const modifyArrX = (particle: string, arr: Matrix, row: number) => {
   const modifyRow = (row: number) => {
-    for (const i in arr[row]) {
+    const max = arr[row].length - 1;
+
+    for (let i = 0; i <= max; i++) {
       arr[row][i] = particle;
     }
   };
@@ -20,7 +22,9 @@ export const modifyArrX = (particle: string, arr: Matrix, row: number) => {
 
 export const modifyArrY = (particle: string, arr: Matrix, col: number) => {
   const modifyCol = (col: number) => {
-    for (const i in arr) {
+    const max = arr.length - 1;
+
+    for (let i = 0; i <= max; i++) {
       if (arr[i][col] === undefined) throw new Error('Column not found');
 
       arr[i][col] = particle;
@@ -50,24 +54,26 @@ export const accelerateNeutron: ParticleAccelerator = (matrix: Matrix) => {
 };
 
 export const accelerateProton: ParticleAccelerator = (matrix: Matrix) => {
+  const matrixEnd = matrix.length - 1;
+
   const makeArrow = (matrix: Matrix) => {
     /* down side */
-    matrix[matrix.length - 1][matrix.length - 2] = 1;
+    matrix[matrixEnd][matrixEnd - 1] = 1;
 
     /* right side */
-    matrix[matrix.length - 2][matrix.length - 1] = 1;
+    matrix[matrixEnd - 1][matrixEnd] = 1;
 
     /* pointer */
-    matrix[matrix.length - 2][matrix.length - 2] = 'p';
+    matrix[matrixEnd - 1][matrixEnd - 1] = 'p';
   };
 
   const particle = 'p';
 
   modifyArrX(particle, matrix, 0);
-  modifyArrX(particle, matrix, matrix.length - 1);
+  modifyArrX(particle, matrix, matrixEnd);
 
   modifyArrY(particle, matrix, 0);
-  modifyArrY(particle, matrix, matrix.length - 1);
+  modifyArrY(particle, matrix, matrixEnd);
 
   makeArrow(matrix);
 
