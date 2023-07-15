@@ -7,11 +7,7 @@ export const generateCyclotron = (n: number): number[][] => {
 
 export const modifyArrX = (particle: string, arr: Matrix, row: number) => {
   const modifyRow = (row: number) => {
-    const max = arr[row].length - 1;
-
-    for (let i = 0; i <= max; i++) {
-      arr[row][i] = particle;
-    }
+    arr[row].fill(particle);
   };
 
   if (arr[row] === undefined) throw new Error('Row not found');
