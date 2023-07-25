@@ -96,7 +96,7 @@ Below are some examples of how to use the `accelerateCyclotron` function:
      [1, 1, 1, 1],
    ];
 
-   const result = accelerateCyclotron('e', matrix);
+   const result = accelerateCyclotron('p', matrix);
 
    printMatrix(result);
    /*
@@ -117,7 +117,7 @@ Below are some examples of how to use the `accelerateCyclotron` function:
      [1, 1, 1, 1],
    ];
 
-   const result = accelerateCyclotron('e', matrix);
+   const result = accelerateCyclotron('n', matrix);
 
    printMatrix(result);
 
